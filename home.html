@@ -1,1 +1,280 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Minds</title>
+    <!-- SEO Meta Description -->
+    <meta name="description" content="Prompt Minds is your hub for creative prompts, inspiring videos, and a community dedicated to exploring imagination. Discover new ideas and join our Telegram group.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000; /* Black theme */
+            color: #fff; /* White text for contrast */
+        }
+        /* Custom styles for responsive iframes */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem; /* Apply rounded corners */
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.5rem; /* Apply rounded corners */
+        }
+
+        /* Custom styles for the dark theme popup from telepopup.html */
+        .popup-container {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            max-width: 300px; /* Slightly smaller max-width */
+            width: calc(100% - 2rem); /* Full width minus padding on mobile */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Darker shadow */
+            border-radius: 1rem;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out forwards;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .popup-header {
+            background: linear-gradient(135deg, #2c3e50, #000000); /* Dark gradient */
+            color: #e0e0e0; /* Light grey text */
+            padding: 0.6rem 1rem; /* Slightly reduced padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        .popup-body {
+            background-color: #000000; /* Black background */
+            padding: 1rem;
+            text-align: center;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+        }
+
+        .telegram-button {
+            background: linear-gradient(45deg, #0088cc, #00aced); /* Telegram blue gradient remains */
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
+        }
+
+        .telegram-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 136, 204, 0.5); /* Stronger shadow on hover */
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            color: #e0e0e0; /* Light grey for close button */
+            font-size: 1.25rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0.25rem;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .close-button:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Lighter hover effect */
+        }
+
+        /* Responsive adjustments for popup */
+        @media (min-width: 640px) { /* Small screens and up */
+            .popup-container {
+                max-width: 320px;
+            }
+        }
+        @media (min-width: 768px) { /* Medium screens and up */
+            .popup-container {
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4">
+
+    <!-- Header Section -->
+    <header class="w-full max-w-6xl text-center py-8">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">Prompt Minds</h1>
+        <p class="text-lg md:text-xl text-gray-300">Explore the world of prompts and creativity.</p>
+    </header>
+
+    <!-- YouTube Videos Section -->
+    <section class="w-full max-w-6xl my-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 text-center">Featured Videos</h2>
+        <div id="video-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Video 1 -->
+            <div class="video-container shadow-lg">
+                <iframe src="https://www.youtube.com/embed/qVkFOSLZVs4?si=NdtSUgIdCKNieJl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Video 2 -->
+            <div class="video-container shadow-lg">
+                <iframe src="https://www.youtube.com/embed/T1Pbwya2t7k?si=M8NeUJHkyWgJRAIw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Video 3 (initially hidden) -->
+            <div class="video-container shadow-lg hidden more-videos">
+                <iframe src="https://www.youtube.com/embed/lcRooY01P5k?si=VtBfoEUfKNBdtXv8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Video 4 (initially hidden) -->
+            <div class="video-container shadow-lg hidden more-videos">
+                <iframe src="https://www.youtube.com/embed/zfili4bXmh4?si=Zxi9o_SmuB4l3Skt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Video 5 (initially hidden) -->
+            <div class="video-container shadow-lg hidden more-videos">
+                <iframe src="https://www.youtube.com/embed/1PdlfSIP23I?si=2ImR2atGrSs1NW2p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Video 6 (initially hidden) -->
+            <div class="video-container shadow-lg hidden more-videos">
+                <iframe src="https://www.youtube.com/embed/XQSHi_-eido?si=V00HUJNyCguzrbB7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Video 7 (initially hidden) -->
+            <div class="video-container shadow-lg hidden more-videos">
+                <iframe src="https://www.youtube.com/embed/yqcwQgoMYJM?si=SVVbg0tFm_eK30UG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Video 8 (initially hidden) -->
+            <div class="video-container shadow-lg hidden more-videos">
+                <iframe src="https://www.youtube.com/embed/8uOe3mJdBx0?si=eo4tGxzRGZwYb4Oo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Video 9 (initially hidden) -->
+            <div class="video-container shadow-lg hidden more-videos">
+                <iframe src="https://www.youtube.com/embed/5O8QAB_0muo?si=lpcLkD8FJlWVuPfk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        <!-- Show All Videos Button -->
+        <div class="text-center mt-8">
+            <button id="show-all-videos-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                Show All Videos
+            </button>
+        </div>
+    </section>
+
+    <!-- Visit Sites Section -->
+    <section class="w-full max-w-6xl my-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Visit Our Other Sites</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://Imginit.blogspot.com" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                Imginit.blogspot.com
+            </a>
+            <a href="https://Aideogram.blogspot.com" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                Aideogram.blogspot.com
+            </a>
+            <a href="https://XChit.netlify.app" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                XChit.netlify.app
+            </a>
+            <a href="https://Promptmindsmultitool.blogspot.com" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                Promptmindsmultitool.blogspot.com
+            </a>
+            <a href="https://Multitoolwebsite-2025.blogspot.com" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                Multitoolwebsite-2025.blogspot.com
+            </a>
+        </div>
+    </section>
+
+    <!-- Telegram Group Section -->
+    <section class="w-full max-w-6xl my-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Join Our Community</h2>
+        <a href="https://t.me/promptmindsgroup" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110">
+            Join Telegram Group
+        </a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="w-full max-w-6xl text-center py-8 mt-auto text-gray-500">
+        <p>&copy; 2025 Prompt Minds. All rights reserved.</p>
+        <div class="text-xs text-gray-600 mt-4 text-left">
+            <p>Welcome to Prompt Minds, your ultimate destination for unleashing creativity and exploring the vast potential of prompts. In an increasingly digital world, the ability to craft effective prompts has become a superpower, opening doors to new ideas, innovative solutions, and boundless artistic expression. Whether you're a seasoned professional looking to refine your generative AI interactions, a content creator seeking fresh inspiration, or simply someone curious about the art of prompting, Prompt Minds offers a rich tapestry of resources designed to ignite your imagination. Our platform is built around the core belief that every individual possesses an innate capacity for creativity, and with the right tools and guidance, that potential can be fully realized. We delve deep into various prompting techniques, from simple keyword associations to complex narrative structures, ensuring that you have a comprehensive understanding of how to elicit the best possible outcomes from your creative endeavors. Our curated collection of videos serves as a visual guide, demonstrating practical applications and showcasing the incredible results that can be achieved through thoughtful prompting. These tutorials cover a wide array of topics, including visual prompt engineering for image generation, textual prompts for storytelling and content creation, and even abstract prompts designed to spark unconventional thinking. Each video is carefully crafted to be both informative and engaging, providing step-by-step instructions and real-world examples that you can immediately apply to your own projects. Beyond the instructional content, Prompt Minds fosters a vibrant community where like-minded individuals can connect, share their experiences, and collaborate on exciting new ventures. Our Telegram group, a central hub for discussion and interaction, provides a dynamic space for members to ask questions, offer advice, and showcase their latest creations. This collaborative environment is designed to be a supportive ecosystem, encouraging continuous learning and mutual growth. We believe that the collective wisdom of our community is one of our greatest assets, and by fostering open communication, we empower everyone to push the boundaries of their creative potential. The world of AI and generative models is evolving at an unprecedented pace, and staying ahead of the curve requires continuous learning and adaptation. Prompt Minds is committed to providing you with the most up-to-date information and techniques, ensuring that you are always equipped with the knowledge needed to navigate this exciting landscape. We regularly update our content to reflect the latest advancements in prompt engineering, offering insights into emerging trends and best practices. Our goal is to demystify complex concepts, making them accessible to everyone, regardless of their technical background. In addition to our video library and community forum, we also highlight other valuable resources from across the web. Our "Visit Our Other Sites" section points you to complementary platforms and blogs that offer unique perspectives and additional tools for creative exploration. These external resources are carefully selected to provide a holistic learning experience, expanding your horizons and connecting you with a broader network of innovators and artists. Prompt Minds is more than just a website; it's a movement dedicated to empowering individuals through the art of prompting. We invite you to explore our content, engage with our community, and embark on a transformative journey of creative discovery. Whether you're aiming to generate stunning visuals, write compelling narratives, or simply unlock new dimensions of your imagination, Prompt Minds is here to guide you every step of the way. Join us today and become a part of a growing community that believes in the power of prompts to shape the future of creativity. Your next great idea is just a prompt away, and we's here to help you find it.
+        </div>
+    </footer>
+
+    <!-- Telegram Join Popup - Integrated from telepopup.html -->
+    <div id="telegramPopup" class="popup-container">
+        <div class="popup-header">
+            <h3 class="text-base font-semibold">Join Our Community!</h3>
+            <button id="closePopup" class="close-button">&times;</button>
+        </div>
+        <div class="popup-body">
+            <p class="text-gray-300 mb-4 text-sm">Stay updated! Join our Telegram group for exclusive content.</p>
+            <a href="https://t.me/promptmindsgroup" target="_blank" class="telegram-button">
+                <!-- Telegram icon (simple SVG for demonstration) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send">
+                    <path d="m22 2-7 20-4-9-9-4 20-7Z"/>
+                    <path d="M15 7l-6 6"/>
+                </svg>
+                Join Telegram
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Existing script for "Show All Videos" button
+        const showAllBtn = document.getElementById('show-all-videos-btn');
+        const moreVideos = document.querySelectorAll('.more-videos');
+
+        showAllBtn.addEventListener('click', () => {
+            moreVideos.forEach(video => {
+                video.classList.remove('hidden');
+            });
+            showAllBtn.classList.add('hidden');
+        });
+
+        // Script for Telegram Popup - Integrated from telepopup.html
+        document.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('telegramPopup');
+            const closeButton = document.getElementById('closePopup');
+
+            // Function to show the popup
+            function showPopup() {
+                popup.style.display = 'block';
+            }
+
+            // Function to hide the popup
+            function hidePopup() {
+                popup.style.display = 'none';
+                // Optionally, set a flag in localStorage to not show it again for a while
+                // localStorage.setItem('telegramPopupClosed', 'true');
+            }
+
+            // Show popup after a short delay (e.g., 1 second) for better user experience
+            setTimeout(() => {
+                // Check if the popup has been closed before in this session (optional)
+                // if (!localStorage.getItem('telegramPopupClosed')) {
+                    showPopup();
+                // }
+            }, 1000); // Adjust delay as needed (1000ms = 1 second)
+
+            // Event listener for the close button
+            closeButton.addEventListener('click', hidePopup);
+        });
+    </script>
+</body>
+</html>
